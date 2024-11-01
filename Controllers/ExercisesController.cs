@@ -9,6 +9,8 @@ using exercise_api;
 using exercise_api.ExerciseContext;
 using exercise_api.Repository;
 using exercise_api.Service;
+using AutoMapper;
+using exercise_api.DTO;
 
 namespace exercise_api.Controllers
 {
@@ -19,12 +21,14 @@ namespace exercise_api.Controllers
         private readonly ExerciseDbContext _context;
         private readonly IExerciseRepository _exerciseRepository;
         private readonly IExerciseService _exerciseService;
+        private readonly IMapper _mapper;
 
-        public ExercisesController(ExerciseDbContext context, IExerciseRepository exerciseRepository, IExerciseService _exerciseService)
+        public ExercisesController(ExerciseDbContext context, IExerciseRepository exerciseRepository, IExerciseService _exerciseService, IMapper mapper)
         {
             this._context = context;
             this._exerciseRepository = exerciseRepository;
             this._exerciseService = _exerciseService;
+            this._mapper = mapper;
         }
 
         // GET: api/Exercises
@@ -50,11 +54,14 @@ namespace exercise_api.Controllers
 
         [HttpGet("by-workout-type/{workouttype}")]
 
-        public async Task<ActionResult<List<Exercise>>> GetExercisesByWorkoutTypeAsync(string workouttype)
+        public async Task<ActionResult<List<ExerciseDto>>> GetExercisesByWorkoutTypeAsync(string workouttype)
         {
             var exerciseList = await _exerciseService.GetExercisesByWorkoutTypeAsync(workouttype);
-            return exerciseList;
+            List<ExerciseDto> results =  _mapper.Map<List<ExerciseDto>>(exerciseList);
+            return results;
         }
+
+
 
         // PUT: api/Exercises/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

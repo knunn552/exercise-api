@@ -2,6 +2,7 @@ using exercise_api.ExerciseContext;
 using exercise_api.Repository;
 using exercise_api.Service;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<ExerciseDbContext>(options =>
 
 builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddTransient<IExerciseService, ExerciseService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
