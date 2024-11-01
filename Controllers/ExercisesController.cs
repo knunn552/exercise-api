@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using exercise_api;
 using exercise_api.ExerciseContext;
+using exercise_api.Repository;
+using exercise_api.Service;
 
 namespace exercise_api.Controllers
 {
@@ -15,10 +17,14 @@ namespace exercise_api.Controllers
     public class ExercisesController : ControllerBase
     {
         private readonly ExerciseDbContext _context;
+        private readonly IExerciseRepository _exerciseRepository;
+        private readonly IExerciseService _exerciseService;
 
-        public ExercisesController(ExerciseDbContext context)
+        public ExercisesController(ExerciseDbContext context, IExerciseRepository exerciseRepository, IExerciseService _exerciseService)
         {
-            _context = context;
+            this._context = context;
+            this._exerciseRepository = exerciseRepository;
+            this._exerciseService = _exerciseService;
         }
 
         // GET: api/Exercises
@@ -40,6 +46,14 @@ namespace exercise_api.Controllers
             }
 
             return exercise;
+        }
+
+        [HttpGet("by-workout-type/{workouttype}")]
+
+        public async Task<ActionResult<List<Exercise>>> GetExercisesByWorkoutTypeAsync(string workouttype)
+        {
+            var exerciseList = await _exerciseService.GetExercisesByWorkoutTypeAsync(workouttype);
+            return exerciseList;
         }
 
         // PUT: api/Exercises/5

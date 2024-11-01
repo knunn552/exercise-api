@@ -1,4 +1,6 @@
 using exercise_api.ExerciseContext;
+using exercise_api.Repository;
+using exercise_api.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ExerciseDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();
+builder.Services.AddTransient<IExerciseService, ExerciseService>();
 
 var app = builder.Build();
 
