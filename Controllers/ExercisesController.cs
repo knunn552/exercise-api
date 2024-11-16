@@ -68,7 +68,7 @@ namespace exercise_api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExercise(int id, Exercise exercise)
         {
-            if (id != exercise.Id)
+            if (id != exercise.ExerciseId)
             {
                 return BadRequest();
             }
@@ -102,7 +102,7 @@ namespace exercise_api.Controllers
             _context.Exercises.Add(exercise);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetExercise", new { id = exercise.Id }, exercise);
+            return CreatedAtAction("GetExercise", new { id = exercise.ExerciseId }, exercise);
         }
 
         // DELETE: api/Exercises/5
@@ -123,7 +123,7 @@ namespace exercise_api.Controllers
 
         private bool ExerciseExists(int id)
         {
-            return _context.Exercises.Any(e => e.Id == id);
+            return _context.Exercises.Any(e => e.ExerciseId == id);
         }
     }
 }
