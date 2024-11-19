@@ -61,12 +61,36 @@ namespace exercise_api.Controllers
             return results;
         }
 
+        // POST: api/Exercises
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Exercise>> PostExercise(Exercise exercise)
+        {
+            _context.Exercises.Add(exercise);
+            await _context.SaveChangesAsync();
 
+            return CreatedAtAction("GetExercise", new { id = exercise.ExerciseId }, exercise);
+        }
 
-        
+        // DELETE: api/Exercises/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteExercise(int id)
+        {
+            var exercise = await _context.Exercises.FindAsync(id);
+            if (exercise == null)
+            {
+                return NotFound();
+            }
 
-        
+            _context.Exercises.Remove(exercise);
+            await _context.SaveChangesAsync();
 
-        
+            return NoContent();
+        }
+
+        private bool ExerciseExists(int id)
+        {
+            return _context.Exercises.Any(e => e.ExerciseId == id);
+        }
     }
 }
