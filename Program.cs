@@ -23,7 +23,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
 // Explicitly bind the app to port 5000
-app.Urls.Add("http://0.0.0.0:5000"); // This line binds the application to port 5000
+//app.Urls.Add(""); // This line binds the application to port 5000
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
