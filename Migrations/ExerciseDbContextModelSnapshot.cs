@@ -23,11 +23,11 @@ namespace exercise_api.Migrations
 
             modelBuilder.Entity("exercise_api.Exercise", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ExerciseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExerciseId"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -39,309 +39,289 @@ namespace exercise_api.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("VideoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("WorkoutType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ExerciseId");
 
                     b.ToTable("Exercises");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Description = "A pulling exercise targeting the biceps and back muscles, pulling the body up to a bar with palms facing towards you.",
+                            ExerciseId = 1,
                             ExerciseType = "Core",
                             Name = "Chin Ups",
+                            VideoUrl = "https://www.youtube.com/watch?v=mTRT9O5r8Wg",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 2,
-                            Description = "A pulling exercise targeting the upper back and biceps, often performed on a bar or with a suspension trainer.",
+                            ExerciseId = 2,
                             ExerciseType = "Core",
                             Name = "Backups",
+                            VideoUrl = "https://www.youtube.com/watch?v=EAJJQjF2j6s",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 3,
-                            Description = "An isolation exercise focusing on the biceps, performed by curling a barbell towards the shoulders.",
+                            ExerciseId = 3,
                             ExerciseType = "Core",
                             Name = "Barbell Curls",
+                            VideoUrl = "https://www.youtube.com/watch?v=qUX2ckeMa08",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 4,
-                            Description = "A shoulder press variation that targets the shoulders and upper back, pressing a barbell behind the head.",
+                            ExerciseId = 4,
                             ExerciseType = "Core",
                             Name = "Behind Head Overhead Barbell Press",
+                            VideoUrl = "https://www.youtube.com/watch?v=7c2ITqTmv_Y",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 5,
-                            Description = "A twisting movement using a landmine attachment to engage the core while pushing the weight forward.",
+                            ExerciseId = 5,
                             ExerciseType = "Core",
                             Name = "Landmine Twist Push",
+                            VideoUrl = "https://www.youtube.com/watch?v=sQ6xBgPRdPU",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 6,
-                            Description = "A rotational movement with a landmine that targets the core and back muscles while pulling the weight.",
+                            ExerciseId = 6,
                             ExerciseType = "Core",
                             Name = "Landmine Pull Rotation",
+                            VideoUrl = "https://www.youtube.com/watch?v=80GP0VlFXsM",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 7,
-                            Description = "A core exercise using a landmine to rotate the body, engaging the obliques and stabilizing muscles.",
+                            ExerciseId = 7,
                             ExerciseType = "Core",
                             Name = "Landmine Rotations",
+                            VideoUrl = "https://www.youtube.com/watch?v=MswsBPLGhE8",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 8,
-                            Description = "A squat variation performed with a barbell held overhead, targeting the entire body and requiring core stability.",
+                            ExerciseId = 8,
                             ExerciseType = "Core",
                             Name = "Overhead Squats",
+                            VideoUrl = "https://www.youtube.com/watch?v=6wzpijkqZzg",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 9,
-                            Description = "A dynamic movement targeting the quadriceps, glutes, and hamstrings by stepping forward into a lunge position.",
+                            ExerciseId = 9,
                             ExerciseType = "Core",
                             Name = "Front Lunges",
+                            VideoUrl = "https://www.youtube.com/watch?v=g8-Ge9S0aUw",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 10,
-                            Description = "A lateral movement that engages the inner and outer thighs by stepping to the side into a lunge position.",
+                            ExerciseId = 10,
                             ExerciseType = "Core",
                             Name = "Side Lunges",
+                            VideoUrl = "https://www.youtube.com/watch?v=1D_tsUSW3ZY",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 11,
-                            Description = "An exercise that targets the glutes and lower back, performed by lifting the hips off the ground while lying down.",
+                            ExerciseId = 11,
                             ExerciseType = "Accessory",
                             Name = "Hip Ups",
+                            VideoUrl = "https://www.youtube.com/watch?v=Ku2P2ON7rYw",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 12,
-                            Description = "An isolation exercise focusing on the calves, performed by raising the heels off the ground while standing.",
+                            ExerciseId = 12,
                             ExerciseType = "Secondary",
                             Name = "Calf Raises",
+                            VideoUrl = "https://www.youtube.com/watch?v=c5Kv6-fnTj8",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 13,
-                            Description = "A lateral leg lift targeting the hip abductors and glutes, performed by kicking the leg to the side.",
+                            ExerciseId = 13,
                             ExerciseType = "Accessory",
                             Name = "Sidekicks",
+                            VideoUrl = "https://www.youtube.com/watch?v=IV1V8G_5fVU",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 14,
-                            Description = "An exercise that engages the shoulders and core while rotating a resistance band overhead.",
+                            ExerciseId = 14,
                             ExerciseType = "Accessory",
                             Name = "Banded Overhead Rotations",
+                            VideoUrl = "https://www.youtube.com/watch?v=8ye8EARmRQQ",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 15,
-                            Description = "A variation of overhead rotations performed with a reverse grip to target different shoulder muscles.",
+                            ExerciseId = 15,
                             ExerciseType = "Accessory",
                             Name = "Reverse Grip Banded Overhead Rotations",
+                            VideoUrl = "https://www.youtube.com/watch?v=8ye8EARmRQQ",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 16,
-                            Description = "An exercise targeting the upper back and shoulders by pulling a resistance band towards the chest with palms down.",
+                            ExerciseId = 16,
                             ExerciseType = "Accessory",
                             Name = "Front Palm Down Banded Pulls",
+                            VideoUrl = "https://www.youtube.com/watch?v=MnDpmNYUjbc",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 17,
-                            Description = "A pulling exercise targeting the upper back and biceps, performed with palms facing up on a resistance band.",
+                            ExerciseId = 17,
                             ExerciseType = "Accessory",
                             Name = "Banded Palm Up Banded Pulls",
+                            VideoUrl = "https://www.youtube.com/watch?v=MnDpmNYUjbc",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 18,
-                            Description = "A pulling exercise targeting the upper back, performed with a resistance band with palms facing down.",
+                            ExerciseId = 18,
                             ExerciseType = "Accessory",
                             Name = "Back Banded Palm Down Pulls",
+                            VideoUrl = "https://www.youtube.com/watch?v=yVcEkvgymt8",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 19,
-                            Description = "A pulling exercise targeting the upper back, performed with a resistance band with palms facing up.",
+                            ExerciseId = 19,
                             ExerciseType = "Accessory",
                             Name = "Back Banded Palm Up Pulls",
+                            VideoUrl = "https://www.youtube.com/watch?v=yVcEkvgymt8",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 20,
-                            Description = "A core and shoulder stability exercise performed by extending arms and legs while lying face down.",
+                            ExerciseId = 20,
                             ExerciseType = "Accessory",
                             Name = "Swimmers",
+                            VideoUrl = "https://www.youtube.com/watch?v=M8a1cgnhyqk",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 21,
-                            Description = "A compound upper body exercise.",
+                            ExerciseId = 21,
                             ExerciseType = "Core",
                             Name = "Bench Press",
+                            VideoUrl = "https://www.youtube.com/watch?v=wzq57DB5Ppg",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 22,
-                            Description = "A shoulder press exercise.",
+                            ExerciseId = 22,
                             ExerciseType = "Core",
                             Name = "Overhead Press",
+                            VideoUrl = "https://www.youtube.com/watch?v=-5MmFTKLC-0",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 23,
-                            Description = "Bodyweight exercise for upper body.",
+                            ExerciseId = 23,
                             ExerciseType = "Core",
                             Name = "Pull-Ups",
+                            VideoUrl = "https://www.youtube.com/watch?v=aAggnpPyR6E",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 24,
-                            Description = "Upper back exercise.",
+                            ExerciseId = 24,
                             ExerciseType = "Secondary",
                             Name = "Dumbbell Rows",
+                            VideoUrl = "https://www.youtube.com/watch?v=3mmaTrhUWNM",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 25,
-                            Description = "Variation of bench press.",
+                            ExerciseId = 25,
                             ExerciseType = "Secondary",
                             Name = "Incline Bench Press",
+                            VideoUrl = "https://www.youtube.com/watch?v=2jFFCy8JBU8",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 26,
-                            Description = "Triceps-focused bodyweight exercise.",
+                            ExerciseId = 26,
                             ExerciseType = "Secondary",
                             Name = "Dips",
+                            VideoUrl = "https://www.youtube.com/watch?v=CRP7tS7RIJU",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 27,
-                            Description = "Shoulder isolation exercise.",
+                            ExerciseId = 27,
                             ExerciseType = "Accessory",
                             Name = "Lateral Raises",
+                            VideoUrl = "https://www.youtube.com/watch?v=c3FkUjXxWmM",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 28,
-                            Description = "Triceps isolation exercise.",
+                            ExerciseId = 28,
                             ExerciseType = "Accessory",
                             Name = "Tricep Pushdowns",
+                            VideoUrl = "https://www.youtube.com/watch?v=5oMnUzy_hQ8",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
-                            Id = 29,
-                            Description = "Biceps isolation exercise.",
-                            ExerciseType = "Accessory",
-                            Name = "Bicep Curls",
-                            WorkoutType = "UpperBodyStrength"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Description = "A compound lower body exercise.",
+                            ExerciseId = 30,
                             ExerciseType = "Core",
                             Name = "Squat",
+                            VideoUrl = "https://www.youtube.com/watch?v=ultWZbUMPL8",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 31,
-                            Description = "A compound lift for posterior chain.",
+                            ExerciseId = 31,
                             ExerciseType = "Core",
                             Name = "Deadlift",
+                            VideoUrl = "https://www.youtube.com/watch?v=op9kVnSso6Q",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 32,
-                            Description = "Lower body machine-based exercise.",
-                            ExerciseType = "Core",
-                            Name = "Leg Press",
-                            WorkoutType = "LowerBodyStrength"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Description = "Single-leg exercise.",
+                            ExerciseId = 33,
                             ExerciseType = "Secondary",
                             Name = "Bulgarian Split Squat",
+                            VideoUrl = "https://www.youtube.com/watch?v=9p5e2BSvoLs",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 34,
-                            Description = "Hamstring-targeted exercise.",
+                            ExerciseId = 34,
                             ExerciseType = "Secondary",
                             Name = "Romanian Deadlift",
+                            VideoUrl = "https://www.youtube.com/watch?v=GZAKFRNtxLY",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 35,
-                            Description = "Lower body exercise with step.",
+                            ExerciseId = 35,
                             ExerciseType = "Secondary",
                             Name = "Step-Ups",
+                            VideoUrl = "https://www.youtube.com/watch?v=i1uM-CbfTBo",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
-                            Id = 36,
-                            Description = "Machine-based hamstring exercise.",
-                            ExerciseType = "Accessory",
-                            Name = "Hamstring Curls",
-                            WorkoutType = "LowerBodyStrength"
-                        },
-                        new
-                        {
-                            Id = 37,
-                            Description = "Glute-focused exercise.",
+                            ExerciseId = 37,
                             ExerciseType = "Accessory",
                             Name = "Glute Bridges",
+                            VideoUrl = "https://www.youtube.com/watch?v=m0AIU1dCVkU",
                             WorkoutType = "LowerBodyStrength"
                         });
                 });
