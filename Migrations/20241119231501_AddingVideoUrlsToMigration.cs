@@ -7,7 +7,7 @@
 namespace exercise_api.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSeedDataWithVideoUrls : Migration
+    public partial class AddingVideoUrlsToMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

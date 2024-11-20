@@ -11,8 +11,8 @@ using exercise_api.ExerciseContext;
 namespace exercise_api.Migrations
 {
     [DbContext(typeof(ExerciseDbContext))]
-    [Migration("20241119210420_AddSeedDataWithVideoUrls")]
-    partial class AddSeedDataWithVideoUrls
+    [Migration("20241119231501_AddingVideoUrlsToMigration")]
+    partial class AddingVideoUrlsToMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
