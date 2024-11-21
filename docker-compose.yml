@@ -7,9 +7,6 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Sportlife#32#sqlserver#32#
-    ports:
-      # Expose SQL Server on local port 1433
-      - "1433:1433"
     networks:
       - mynetwork
 
@@ -18,29 +15,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: api
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=exercises-api;User=sa;Password=Sportlife#32#sqlserver#32#;
+    depends_on:
+      - sqlserver
     ports:
-      # Expose the API on local port 5000
-      - "5000:5291"
-    depends_on:
-      - sqlserver
-    networks:
-      - mynetwork
-
-  migration:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: migration
-    # Match the actual migration bundle path in your Dockerfile
-    command: ./migrations/efbundle
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=ExercisesDB;User=sa;Password=Sportlife#32#sqlserver#32#;
-    depends_on:
-      - sqlserver
+      - "5000:5000"
     networks:
       - mynetwork
 
