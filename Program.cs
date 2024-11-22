@@ -24,9 +24,6 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
-// Explicitly bind the app to port 5000
-app.Urls.Add("http://0.0.0.0:5000");
-
 using (var scope = app.Services.CreateScope())
 {
     var service = scope.ServiceProvider;

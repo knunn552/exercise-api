@@ -11,15 +11,15 @@ using exercise_api.ExerciseContext;
 namespace exercise_api.Migrations
 {
     [DbContext(typeof(ExerciseDbContext))]
-    [Migration("20241120001717_AddedFreshLinkForCalfRaises")]
-    partial class AddedFreshLinkForCalfRaises
+    [Migration("20241121192248_NewMigrationTestingLocalSeedData")]
+    partial class NewMigrationTestingLocalSeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -60,15 +60,15 @@ namespace exercise_api.Migrations
                             ExerciseId = 1,
                             ExerciseType = "Core",
                             Name = "Chin Ups",
-                            VideoUrl = "https://www.youtube.com/watch?v=mTRT9O5r8Wg",
+                            VideoUrl = "https://www.youtube.com/results?search_query=chin+ups+demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 2,
                             ExerciseType = "Core",
-                            Name = "Backups",
-                            VideoUrl = "https://www.youtube.com/watch?v=EAJJQjF2j6s",
+                            Name = "Behind Neck Pull Ups",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Behind+The+Neck+Pull+Up",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -76,7 +76,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 3,
                             ExerciseType = "Core",
                             Name = "Barbell Curls",
-                            VideoUrl = "https://www.youtube.com/watch?v=qUX2ckeMa08",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Barbell+Biceps+Curl+-+Demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -84,7 +84,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 4,
                             ExerciseType = "Core",
                             Name = "Behind Head Overhead Barbell Press",
-                            VideoUrl = "https://www.youtube.com/watch?v=7c2ITqTmv_Y",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Behind+the+Neck+Overhead+Press+demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -92,7 +92,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 5,
                             ExerciseType = "Core",
                             Name = "Landmine Twist Push",
-                            VideoUrl = "https://www.youtube.com/watch?v=sQ6xBgPRdPU",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Landmine+twist+press",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -100,7 +100,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 6,
                             ExerciseType = "Core",
                             Name = "Landmine Pull Rotation",
-                            VideoUrl = "https://www.youtube.com/watch?v=80GP0VlFXsM",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Power%3A+Landmine+Pull+to+Press",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -108,7 +108,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 7,
                             ExerciseType = "Core",
                             Name = "Landmine Rotations",
-                            VideoUrl = "https://www.youtube.com/watch?v=MswsBPLGhE8",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Landmine+Rotation",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -116,7 +116,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 8,
                             ExerciseType = "Core",
                             Name = "Overhead Squats",
-                            VideoUrl = "https://www.youtube.com/watch?v=6wzpijkqZzg",
+                            VideoUrl = "https://www.youtube.com/results?search_query=OVERHEAD+SQUAT",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -124,7 +124,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 9,
                             ExerciseType = "Core",
                             Name = "Front Lunges",
-                            VideoUrl = "https://www.youtube.com/watch?v=g8-Ge9S0aUw",
+                            VideoUrl = "https://www.youtube.com/results?search_query=How+To+Do+A+Forward+Lunge",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -132,15 +132,15 @@ namespace exercise_api.Migrations
                             ExerciseId = 10,
                             ExerciseType = "Core",
                             Name = "Side Lunges",
-                            VideoUrl = "https://www.youtube.com/watch?v=1D_tsUSW3ZY",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Side+Lunges+Demonstration",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 11,
                             ExerciseType = "Accessory",
-                            Name = "Hip Ups",
-                            VideoUrl = "https://www.youtube.com/watch?v=Ku2P2ON7rYw",
+                            Name = "Hip Flexor Raises",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Kettlebell+Hip+Flexor+Raise",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -148,7 +148,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 12,
                             ExerciseType = "Secondary",
                             Name = "Calf Raises",
-                            VideoUrl = "https://www.youtube.com/watch?v=c5Kv6-fnTj8",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Calf+Raise+Exercise+Demo",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -156,7 +156,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 13,
                             ExerciseType = "Accessory",
                             Name = "Sidekicks",
-                            VideoUrl = "https://www.youtube.com/watch?v=IV1V8G_5fVU",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Alternating+Side+Kicks",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -164,7 +164,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 14,
                             ExerciseType = "Accessory",
                             Name = "Banded Overhead Rotations",
-                            VideoUrl = "https://www.youtube.com/watch?v=8ye8EARmRQQ",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Resistance+Band+Overhead+Rotation",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -172,7 +172,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 15,
                             ExerciseType = "Accessory",
                             Name = "Reverse Grip Banded Overhead Rotations",
-                            VideoUrl = "https://www.youtube.com/watch?v=8ye8EARmRQQ",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Resistance+Band+Overhead+Rotation",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -180,7 +180,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 16,
                             ExerciseType = "Accessory",
                             Name = "Front Palm Down Banded Pulls",
-                            VideoUrl = "https://www.youtube.com/watch?v=MnDpmNYUjbc",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Band+Pull+Apart",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -188,31 +188,23 @@ namespace exercise_api.Migrations
                             ExerciseId = 17,
                             ExerciseType = "Accessory",
                             Name = "Banded Palm Up Banded Pulls",
-                            VideoUrl = "https://www.youtube.com/watch?v=MnDpmNYUjbc",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Band+Pull+Apart",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 18,
                             ExerciseType = "Accessory",
-                            Name = "Back Banded Palm Down Pulls",
-                            VideoUrl = "https://www.youtube.com/watch?v=yVcEkvgymt8",
-                            WorkoutType = "UpperBodyStrength"
-                        },
-                        new
-                        {
-                            ExerciseId = 19,
-                            ExerciseType = "Accessory",
-                            Name = "Back Banded Palm Up Pulls",
-                            VideoUrl = "https://www.youtube.com/watch?v=yVcEkvgymt8",
+                            Name = "Banded Chest Flys",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Band+Chest+Fly",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 20,
                             ExerciseType = "Accessory",
-                            Name = "Swimmers",
-                            VideoUrl = "https://www.youtube.com/watch?v=M8a1cgnhyqk",
+                            Name = "Prone Swimmers",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Prone+Swimmers",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -228,7 +220,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 22,
                             ExerciseType = "Core",
                             Name = "Overhead Press",
-                            VideoUrl = "https://www.youtube.com/watch?v=-5MmFTKLC-0",
+                            VideoUrl = "https://www.youtube.com/results?search_query=How+To+Perfect+The+Overhead+Press",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -236,7 +228,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 23,
                             ExerciseType = "Core",
                             Name = "Pull-Ups",
-                            VideoUrl = "https://www.youtube.com/watch?v=aAggnpPyR6E",
+                            VideoUrl = "https://www.youtube.com/results?search_query=pull+up+demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -244,7 +236,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 24,
                             ExerciseType = "Secondary",
                             Name = "Dumbbell Rows",
-                            VideoUrl = "https://www.youtube.com/watch?v=3mmaTrhUWNM",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Dumbbell+Row+(Exercise+Demo)",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -252,7 +244,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 25,
                             ExerciseType = "Secondary",
                             Name = "Incline Bench Press",
-                            VideoUrl = "https://www.youtube.com/watch?v=2jFFCy8JBU8",
+                            VideoUrl = "https://www.youtube.com/results?search_query=How+To+Do+A+Barbell+Incline+Bench+Press",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -260,7 +252,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 26,
                             ExerciseType = "Secondary",
                             Name = "Dips",
-                            VideoUrl = "https://www.youtube.com/watch?v=CRP7tS7RIJU",
+                            VideoUrl = "https://www.youtube.com/results?search_query=How+To+Do+Bench+Dips+%7C+Exercise+Demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -268,15 +260,15 @@ namespace exercise_api.Migrations
                             ExerciseId = 27,
                             ExerciseType = "Accessory",
                             Name = "Lateral Raises",
-                            VideoUrl = "https://www.youtube.com/watch?v=c3FkUjXxWmM",
+                            VideoUrl = "https://www.youtube.com/results?search_query=How+to+do+a+lateral+raise+-+20+second+demo",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 28,
                             ExerciseType = "Accessory",
-                            Name = "Tricep Pushdowns",
-                            VideoUrl = "https://www.youtube.com/watch?v=5oMnUzy_hQ8",
+                            Name = "Reverse Tricep Pushups",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Reverse+Tricep+Pushups",
                             WorkoutType = "UpperBodyStrength"
                         },
                         new
@@ -284,7 +276,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 30,
                             ExerciseType = "Core",
                             Name = "Squat",
-                            VideoUrl = "https://www.youtube.com/watch?v=ultWZbUMPL8",
+                            VideoUrl = "https://www.youtube.com/results?search_query=The+Back+Squat",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -292,7 +284,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 31,
                             ExerciseType = "Core",
                             Name = "Deadlift",
-                            VideoUrl = "https://www.youtube.com/watch?v=op9kVnSso6Q",
+                            VideoUrl = "https://www.youtube.com/results?search_query=The+Deadlift%3A+CrossFit+Foundational+Movement",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -300,7 +292,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 33,
                             ExerciseType = "Secondary",
                             Name = "Bulgarian Split Squat",
-                            VideoUrl = "https://www.youtube.com/watch?v=9p5e2BSvoLs",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Bulgarian+Split+Squat+Step+by+Step+Guide",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -308,7 +300,7 @@ namespace exercise_api.Migrations
                             ExerciseId = 34,
                             ExerciseType = "Secondary",
                             Name = "Romanian Deadlift",
-                            VideoUrl = "https://www.youtube.com/watch?v=GZAKFRNtxLY",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Movement+Demo+-+The+Romanian+Deadlift",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
@@ -316,15 +308,15 @@ namespace exercise_api.Migrations
                             ExerciseId = 35,
                             ExerciseType = "Secondary",
                             Name = "Step-Ups",
-                            VideoUrl = "https://www.youtube.com/watch?v=i1uM-CbfTBo",
+                            VideoUrl = "https://www.youtube.com/results?search_query=Box+Step+Up+Demo",
                             WorkoutType = "LowerBodyStrength"
                         },
                         new
                         {
                             ExerciseId = 37,
-                            ExerciseType = "Accessory",
-                            Name = "Glute Bridges",
-                            VideoUrl = "https://www.youtube.com/",
+                            ExerciseType = "Secondary",
+                            Name = "Glute Ham Raises",
+                            VideoUrl = "https://www.youtube.com/results?search_query=glute+ham+raises+demo",
                             WorkoutType = "LowerBodyStrength"
                         });
                 });

@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   sqlserver:
@@ -6,22 +6,26 @@ services:
     container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Sportlife#32#sqlserver#32#
+      - MSSQL_SA_PASSWORD=Sportlife#32#sqlserver#32#
+    ports:
+      - "1433:1433" # Expose SQL Server to the host
     networks:
-      - mynetwork
+      - app-network
 
-  api:
+  exercise-api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api
-    depends_on:
-      - sqlserver
+    container_name: exercise-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "5000:5000"
+      - "8080:8080" # Expose your API to the host
+    depends_on:
+      - sqlserver # Ensure SQL Server starts before the API
     networks:
-      - mynetwork
+      - app-network
 
 networks:
-  mynetwork:
+  app-network:
     driver: bridge
