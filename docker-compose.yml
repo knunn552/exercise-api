@@ -8,9 +8,11 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=Sportlife#32#sqlserver#32#
     ports:
-      - "1433:1433" # Expose SQL Server to the host
+      - "1433:1433"
     networks:
       - app-network
+    volumes:
+      - sql_data:/var/opt/mssql # Add volume for persistence
 
   exercise-api:
     build:
@@ -20,12 +22,31 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "8080:8080" # Expose your API to the host
+      - "8080:8080" 
     depends_on:
-      - sqlserver # Ensure SQL Server starts before the API
+      - sqlserver  # Ensure SQL Server starts before the API
+    networks:
+      - app-network
+
+  blazorapp:
+    build:
+      context: ../FitskedApp
+      dockerfile: Dockerfile  
+    container_name: blazorapp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80:8080"
+    depends_on:
+      - sqlserver 
+      - exercise-api  
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  sql_data:
+    driver: local
