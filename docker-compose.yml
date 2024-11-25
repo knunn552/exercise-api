@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   sqlserver:
@@ -6,44 +6,47 @@ services:
     container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Sportlife#32#sqlserver#32#
+      - MSSQL_SA_PASSWORD=Sportlife#32#sqlserver#32#
     ports:
-      # Expose SQL Server on local port 1433
       - "1433:1433"
     networks:
-      - mynetwork
+      - app-network
+    volumes:
+      - sql_data:/var/opt/mssql # Add volume for persistence
 
-  api:
+  exercise-api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api
+    container_name: exercise-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=exercises-api;User=sa;Password=Sportlife#32#sqlserver#32#;
     ports:
-      # Expose the API on local port 5000
-      - "5000:5291"
+      - "8080:8080" 
     depends_on:
-      - sqlserver
+      - sqlserver  # Ensure SQL Server starts before the API
     networks:
-      - mynetwork
+      - app-network
 
-  migration:
+  blazorapp:
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: migration
-    # Match the actual migration bundle path in your Dockerfile
-    command: ./migrations/efbundle
+      context: ../FitskedApp
+      dockerfile: Dockerfile  
+    container_name: blazorapp
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=ExercisesDB;User=sa;Password=Sportlife#32#sqlserver#32#;
+    ports:
+      - "80:8080"
     depends_on:
-      - sqlserver
+      - sqlserver 
+      - exercise-api  
     networks:
-      - mynetwork
+      - app-network
 
 networks:
-  mynetwork:
+  app-network:
     driver: bridge
+
+volumes:
+  sql_data:
+    driver: local
