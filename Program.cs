@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
 
-// Add services to the container.
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = Environment.GetEnvironmentVariable("API_DB_CONNECTION_STRING")
+    ?? throw new InvalidOperationException("Database connection string is not set. Please configure 'API_DB_CONNECTION_STRING'.");
+
 builder.Services.AddDbContext<ExerciseDbContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -29,15 +29,10 @@ using (var scope = app.Services.CreateScope())
     var service = scope.ServiceProvider;
     try
     {
-        if (configuration["EF_MIGRATE"] == "true")
+        if (builder.Configuration["EF_MIGRATE"] == "true")
         {
-            Console.WriteLine("Applying migrations...");
             var context = service.GetRequiredService<ExerciseDbContext>();
             await context.Database.MigrateAsync();
-        }
-        else
-        {
-            Console.WriteLine("EF Migration skipped.");
         }
     }
     catch (Exception ex)
@@ -46,9 +41,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -56,9 +48,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
