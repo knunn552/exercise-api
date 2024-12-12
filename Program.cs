@@ -24,15 +24,31 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
+
+if(Environment.GetEnvironmentVariable("AWS_EC2") == "true")
+{
+    app.Urls.Add("http://0.0.0.0:5000");
+}
+
+
 using (var scope = app.Services.CreateScope())
 {
     var service = scope.ServiceProvider;
+
     try
     {
-        if (builder.Configuration["EF_MIGRATE"] == "true")
+        var efMigrate = Environment.GetEnvironmentVariable("EF_MIGRATE");
+
+        if (!string.IsNullOrEmpty(efMigrate) && efMigrate.ToLower() == "true")
         {
+            Console.WriteLine("EF_MIGRATE is set to true. Applying migrations...");
             var context = service.GetRequiredService<ExerciseDbContext>();
             await context.Database.MigrateAsync();
+            Console.WriteLine("Migrations applied successfully.");
+        }
+        else
+        {
+            Console.WriteLine("EF_MIGRATE is not set to true. Skipping migrations.");
         }
     }
     catch (Exception ex)
@@ -40,6 +56,7 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"Error applying migrations: {ex.Message}");
     }
 }
+
 
 if (app.Environment.IsDevelopment())
 {
