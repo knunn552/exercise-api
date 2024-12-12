@@ -12,7 +12,7 @@ services:
     networks:
       - app-network
     volumes:
-      - sql_data:/var/opt/mssql # Add volume for persistence
+      - sql_data:/var/opt/mssql
 
   exercise-api:
     build:
@@ -21,10 +21,11 @@ services:
     container_name: exercise-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - API_DB_CONNECTION_STRING=Server=sqlserver;Database=exercises-api;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
     ports:
-      - "8080:8080" 
+      - "5000:5000" 
     depends_on:
-      - sqlserver  # Ensure SQL Server starts before the API
+      - sqlserver
     networks:
       - app-network
 
@@ -35,6 +36,9 @@ services:
     container_name: blazorapp
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Server=sqlserver;Database=fitsked;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - API_BASE_URL=http://exercise-api:5000
+      - AWS_EC2=true
     ports:
       - "80:8080"
     depends_on:
@@ -43,7 +47,7 @@ services:
     networks:
       - app-network
 
-networks:
+networks: 
   app-network:
     driver: bridge
 
