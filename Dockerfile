@@ -26,5 +26,5 @@ RUN dotnet publish "./exercise-api.csproj" -c $BUILD_CONFIGURATION -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-# CMD [ "dotnet ef database update"] ENTRYPOINT overrides CMD so I don't think this does much if anything
+# CMD [ "dotnet ef database update"] ENTRYPOINT overrides CMD so I don't think this does much of anything
 ENTRYPOINT ["dotnet", "exercise-api.dll"]

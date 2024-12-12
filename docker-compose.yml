@@ -14,14 +14,16 @@ services:
     volumes:
       - sql_data:/var/opt/mssql
 
-  exercise-api:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: exercise-api
+    container_name: api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - API_DB_CONNECTION_STRING=Server=sqlserver;Database=exercises-api;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - AWS_EC2=true
+      - EF_MIGRATE=true
     ports:
       - "5000:5000" 
     depends_on:
@@ -29,11 +31,11 @@ services:
     networks:
       - app-network
 
-  blazorapp:
+  app:
     build:
       context: ../FitskedApp
       dockerfile: Dockerfile  
-    container_name: blazorapp
+    container_name: app
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DB_CONNECTION_STRING=Server=sqlserver;Database=fitsked;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
@@ -43,7 +45,7 @@ services:
       - "80:8080"
     depends_on:
       - sqlserver 
-      - exercise-api  
+      - api  
     networks:
       - app-network
 
