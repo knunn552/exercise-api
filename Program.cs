@@ -43,8 +43,32 @@ using (var scope = app.Services.CreateScope())
         {
             Console.WriteLine("EF_MIGRATE is set to true. Applying migrations...");
             var context = service.GetRequiredService<ExerciseDbContext>();
-            await context.Database.MigrateAsync();
-            Console.WriteLine("Migrations applied successfully.");
+
+            const int maxRetryCount = 5;
+            const int delayMilliseconds = 5000;
+            int retryCount = 0;
+
+            while (retryCount < maxRetryCount)
+            {
+                try
+                {
+                    await context.Database.MigrateAsync();
+                    Console.WriteLine("Migrations applied successfully.");
+                    break; // Exit the retry loop if successful
+                }
+                catch (Exception ex)
+                {
+                    retryCount++;
+                    Console.WriteLine($"Migration attempt {retryCount} failed: {ex.Message}");
+                    if (retryCount == maxRetryCount)
+                    {
+                        Console.WriteLine("Max retry attempts reached. Migration failed.");
+                        throw; // Re-throw the exception to stop the app from running
+                    }
+                    Console.WriteLine($"Retrying in {delayMilliseconds / 1000} seconds...");
+                    await Task.Delay(delayMilliseconds);
+                }
+            }
         }
         else
         {
