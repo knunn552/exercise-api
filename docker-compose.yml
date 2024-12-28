@@ -1,3 +1,4 @@
+
 version: '3.9'
 
 services:
@@ -6,7 +7,7 @@ services:
     container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=Sportlife#32#sqlserver#32#
+      - MSSQL_SA_PASSWORD=Password#1
     ports:
       - "1433:1433"
     networks:
@@ -21,7 +22,7 @@ services:
     container_name: api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - API_DB_CONNECTION_STRING=Server=sqlserver;Database=exercises-api;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - API_DB_CONNECTION_STRING=Server=sqlserver;Database=exercises-api;User Id=sa;Password=Password#1;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
       - AWS_EC2=true
       - EF_MIGRATE=true
     ports:
@@ -38,10 +39,9 @@ services:
     container_name: app
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - DB_CONNECTION_STRING=Server=sqlserver;Database=fitsked;User Id=sa;Password=Sportlife#32#sqlserver#32#;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
+      - DB_CONNECTION_STRING=Server=sqlserver;Database=fitsked;User Id=sa;Password=Password#1;Encrypt=False;TrustServerCertificate=True;MultipleActiveResultSets=true
       - API_BASE_URL=http://exercise-api:5000
       - AWS_EC2=true
-      - EF_MIGRATE=true
     ports:
       - "80:8080"
     depends_on:
